@@ -1,4 +1,5 @@
 @import url("./transition.less");
+@import url("./global.less");
 
 html {
   /*标准字体大小设置 14 像素「rem 参照对象」*/

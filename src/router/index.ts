@@ -1,31 +1,18 @@
-import { createRouter, createMemoryHistory, RouteRecordRaw } from 'vue-router'
-import NProgress from 'nprogress'
+import { createRouter, createWebHistory } from "vue-router";
+import NProgress from "nprogress";
 
-const routes: RouteRecordRaw[] = [
-  {
-    path: '/',
-    name: 'Layout',
-    component: () => import('~/layout/Layout.vue'),
-    children: [
-      {
-        path: '',
-        name: 'Index',
-        component: () => import('~/views/index/Index.vue')
-      }
-    ]
-  }
-]
+import { routes } from "./routes";
 
 const router = createRouter({
-  history: createMemoryHistory(),
+  history: createWebHistory(),
   routes,
-})
+});
 router.beforeEach((to, from, next) => {
-  NProgress.start()
-  next()
-})
+  NProgress.start();
+  next();
+});
 router.afterEach((to, from) => {
-  NProgress.done()
-})
+  NProgress.done();
+});
 
-export default router
+export default router;

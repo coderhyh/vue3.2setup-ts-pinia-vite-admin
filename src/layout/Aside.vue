@@ -1,72 +1,79 @@
 <template>
   <div class="Aside">
-    <el-menu
-      active-text-color="#ffd04b"
-      background-color="#545c64"
-      text-color="#fff"
-      default-active="2"
-      class="el-menu-vertical-demo"
-      @open="handleOpen"
-      @close="handleClose"
-    >
-      <el-sub-menu index="1">
-        <template #title>
-          <el-icon><location /></el-icon>
-          <span>Navigator One</span>
-        </template>
-        <el-menu-item-group title="Group One">
-          <el-menu-item index="1-1">
-            item one
-          </el-menu-item>
-          <el-menu-item index="1-2">
-            item one
-          </el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="Group Two">
-          <el-menu-item index="1-3">
-            item three
-          </el-menu-item>
-        </el-menu-item-group>
-        <el-sub-menu index="1-4">
-          <template #title>
-            item four
-          </template>
-          <el-menu-item index="1-4-1">
-            item one
-          </el-menu-item>
-        </el-sub-menu>
-      </el-sub-menu>
-      <el-menu-item index="2">
-        <el-icon><icon-menu /></el-icon>
-        <span>Navigator Two</span>
-      </el-menu-item>
-      <el-menu-item
-        index="3"
-        disabled
-      >
-        <el-icon><document /></el-icon>
-        <span>Navigator Three</span>
-      </el-menu-item>
-      <el-menu-item index="4">
-        <el-icon><setting /></el-icon>
-        <span>Navigator Four</span>
-      </el-menu-item>
+    <h2 class="Aside-title">vue-ts-vite-pinia-admin</h2>
+    <el-menu router :default-active="route.path" :collapse="false" background-color="#304156" text-color="#bfcbd9"
+      active-text-color="#409EFF">
+      <TreeMenu :menuList="menuList"></TreeMenu>
     </el-menu>
   </div>
 </template>
 
 <script setup lang="ts">
-
-const handleOpen = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
-}
-const handleClose = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
-}
+import { routes } from '~/router/routes'
+const menuList = ref(routes[0].children)
+const route = useRoute()
+const menuList1 = ref<Menu[]>([
+  {
+    parent: 0,
+    name: "控制台",
+    id: 13,
+    url: "/",
+    icon: "clarity:dashboard-solid"
+  },
+  {
+    parent: 0,
+    name: "文档",
+    id: 8,
+    url: "/documentation",
+    icon: 'ri:treasure-map-fill'
+  },
+  {
+    parent: 0,
+    name: "管理",
+    id: 15,
+    url: "",
+    icon: 'ic:baseline-support-agent',
+    children: [
+      {
+        parent: 15,
+        name: "角色管理",
+        id: 16,
+        url: "/manage",
+        icon: 'ic:round-import-contacts'
+      }
+    ]
+  },
+  {
+    parent: 0,
+    name: "信息",
+    id: 9,
+    url: "xinxi",
+    icon: 'carbon:shopping-cart',
+    children: [
+      {
+        parent: 0,
+        name: "人员信息",
+        id: 10,
+        url: "/pricing",
+        icon: 'carbon:shopping-cart',
+      }
+    ]
+  }
+]
+)
 </script>
 
 <style lang="less" scoped>
-.Aside{
+.Aside {
+  height: 100vh;
+  background: #304156;
 
+  &-title {
+    line-height: 60px;
+    text-align: center;
+    font-size: 21px;
+    background: #EBAA4B;
+    color: white;
+  }
 }
 </style>

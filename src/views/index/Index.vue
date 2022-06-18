@@ -1,7 +1,6 @@
 <template>
   <div class="index">
     <el-button>{{ name }}</el-button>
-    <div class="carbon:close hover:carbon:close-filled close-icon"></div>
   </div>
 </template>
 
@@ -10,5 +9,7 @@ const { name } = useStore("user");
 </script>
 
 <style lang="less" scoped>
-.index {}
+.index {
+  background: #FAFAFA;
+}
 </style>
