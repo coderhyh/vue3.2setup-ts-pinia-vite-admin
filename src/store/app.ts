@@ -1,4 +1,4 @@
-const defaultTab: App.Tab = { title: '控制台', name: '/' }
+const defaultTab: App.Tab = { title: '控制台', path: '/' }
 
 export default defineStore({
   id: 'app',
@@ -17,20 +17,18 @@ export default defineStore({
       this.isCollapse = !this.isCollapse
     },
     addTab(tab: App.Tab = defaultTab) {
-      if (this.tabs.some((t) => t.name === tab.name)) return
+      if (this.tabs.some((t) => t.path === tab.path)) return
       this.tabs.push(tab)
     },
-    removeTab(name: string) {
-      this.tabs = this.tabs.filter((t) => t.name !== name)
-      if (this.tabs.length === 0) {
-        this.addTab()
-      }
+    removeTab(path: string) {
+      this.tabs = this.tabs.filter((t) => t.path !== path)
+      if (this.tabs.length === 0) this.addTab()
     },
-    removeOtherTab(name: string) {
-      this.tabs = this.tabs.filter((t) => t.name === name)
+    removeOtherTab(path: string) {
+      this.tabs = this.tabs.filter((t) => t.path === path)
     },
-    removeRightTab(name: string) {
-      const index = this.tabs.findIndex((i) => i.name === name)
+    removeRightTab(path: string) {
+      const index = this.tabs.findIndex((i) => i.path === path)
       this.tabs = this.tabs.slice(0, index + 1)
     },
     removeAllTab() {

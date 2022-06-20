@@ -10,7 +10,7 @@
       <el-main>
         <router-view v-slot="{ Component, route }">
           <transition name="fade-transform" mode="out-in">
-            <keep-alive :include="tabs.map(i => i.name.slice(1))">
+            <keep-alive :include="tabs.map(i => i.path.slice(1))">
               <component :is="Component" :key="route.name"></component>
             </keep-alive>
           </transition>
