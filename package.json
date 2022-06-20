@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "cz": "git add . && cz"
   },
   "dependencies": {
     "auto-import-types": "^0.0.4",
@@ -18,12 +19,16 @@
     "vue-router": "^4.0.16"
   },
   "devDependencies": {
+    "@commitlint/config-conventional": "^17.0.2",
     "@iconify/json": "^2.1.63",
     "@types/node": "^18.0.0",
     "@types/nprogress": "^0.2.0",
     "@typescript-eslint/eslint-plugin": "^5.28.0",
     "@typescript-eslint/parser": "^5.28.0",
     "@vitejs/plugin-vue": "^2.3.3",
+    "commitizen": "^4.2.4",
+    "commitlint": "^17.0.2",
+    "cz-customizable": "^6.3.0",
     "eslint": "^8.17.0",
     "eslint-plugin-vue": "^9.1.1",
     "less": "^4.1.3",
