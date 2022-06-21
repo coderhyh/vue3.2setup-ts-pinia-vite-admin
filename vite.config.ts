@@ -47,6 +47,14 @@ export default defineConfig({
     port: 3000,
     open: true, //自动打开
     base: './ ', //生产环境路径
+    hmr: true, 
+    proxy: {
+      '/api': {
+        target: 'https://fastly.jsdelivr.net/gh/apache/echarts-website@asf-site/examples',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    },
   },
   // 打包配置
   build: {
