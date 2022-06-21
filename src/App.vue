@@ -4,10 +4,12 @@
   </el-config-provider>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
+import echarts from '~/common/initEcharts'
+provide("echarts", echarts)
 </script>
 
 <style lang="less" scoped>
-.App {}
+// .App {}
 </style>

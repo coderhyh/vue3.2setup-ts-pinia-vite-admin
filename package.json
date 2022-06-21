@@ -1,5 +1,5 @@
 {
-  "name": "mycli",
+  "name": "vue3.2setup-element-pinia-vite-admin",
   "private": true,
   "version": "0.0.0",
   "scripts": {
@@ -12,6 +12,7 @@
     "animate.css": "^4.1.1",
     "auto-import-types": "^0.0.4",
     "axios": "^0.27.2",
+    "echarts": "^5.3.3",
     "element-plus": "^2.2.5",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.14",
