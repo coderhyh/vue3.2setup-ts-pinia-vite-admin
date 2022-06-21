@@ -73,7 +73,7 @@ onMounted(() => {
   //   };
 
   //   myChart.setOption(option);
-});
+  // });
 })
 </script>
 
