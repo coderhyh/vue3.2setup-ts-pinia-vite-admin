@@ -6,8 +6,9 @@
 
 <script lang="ts" setup>
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
+
 import echarts from '~/common/initEcharts'
-provide("echarts", echarts)
+provide('echarts', echarts)
 </script>
 
 <style lang="less" scoped>

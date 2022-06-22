@@ -1,6 +1,6 @@
 <template>
-  <el-icon :size="size">
-    <div :class="className"></div>
+  <el-icon :size="size || 12">
+    <i :class="className" />
   </el-icon>
 </template>
 
@@ -14,7 +14,12 @@ const className = computed(() => {
   const { icon } = props
   return [icon || 'carbon:unknown']
 })
+const icons = [
+  'clarity:dashboard-solid',
+  'ri:treasure-map-fill',
+  'ic:baseline-support-agent',
+  'ic:round-import-contacts',
+]
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

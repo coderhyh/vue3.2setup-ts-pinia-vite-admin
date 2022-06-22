@@ -1,6 +1,11 @@
 <template>
   <div class="crumbs">
-    <Icon class="crumbs-icon" :icon="1 ? 'foundation-indent-less' : 'foundation-indent-more'" size="30px" />
+    <Icon
+      class="crumbs-icon"
+      @click="updateCollapse"
+      :icon="isCollapse ? 'foundation-indent-less' : 'foundation-indent-more'"
+      size="30px"
+    />
     <el-breadcrumb separator="/">
       <el-breadcrumb-item to="/">控制台</el-breadcrumb-item>
       <transition-group name="breadcrumb">
@@ -15,30 +20,30 @@
 <script setup lang="ts">
 import type { RouteRecordRaw } from 'vue-router'
 import { routes } from '~/router/routes'
+const { isCollapse, updateCollapse } = useStore('app')
 const route = useRoute()
 const layoutChildren = routes[0].children
 
 const breadcrumbArr = computed((): RouteRecordRaw[] => {
-  const currentRouteName = route.meta.name;
-  const currentRouteObj = getTreeParent(layoutChildren as RouteRecordRaw[], currentRouteName);
-  const currentRoute: RouteRecordRaw[] = readNodes([currentRouteObj], route.path);
+  const currentRouteName = route.meta.name
+  const currentRouteObj = getTreeParent(layoutChildren as RouteRecordRaw[], currentRouteName)
+  const currentRoute: RouteRecordRaw[] = readNodes([currentRouteObj], route.path)
   return currentRoute.filter((i) => i.meta?.name !== '控制台')
 })
 
-function getTreeParent(
-  list: RouteRecordRaw[],
-  target: unknown
-): RouteRecordRaw {
+function getTreeParent(list: RouteRecordRaw[], target: unknown): RouteRecordRaw {
   return list.find(
-    (i) =>
-      i.meta?.name === target ||
-      (i.children && getTreeParent(i.children, target))
-  ) as RouteRecordRaw;
+    (i) => i.meta?.name === target || (i.children && getTreeParent(i.children, target))
+  ) as RouteRecordRaw
 }
 
-function readNodes(list: RouteRecordRaw[], target = '', arr: RouteRecordRaw[] = []): RouteRecordRaw[] {
+function readNodes(
+  list: RouteRecordRaw[],
+  target = '',
+  arr: RouteRecordRaw[] = []
+): RouteRecordRaw[] {
   for (let item of list) {
-    arr.push(item);
+    arr.push(item)
     if (item.meta?.name !== target && item.children) readNodes(item.children, target, arr)
   }
   return arr
@@ -50,14 +55,12 @@ function readNodes(list: RouteRecordRaw[], target = '', arr: RouteRecordRaw[] = 
   display: flex;
   align-items: center;
   height: 60px;
-
   &-icon {
     margin-right: 20px;
     padding: 15px;
     cursor: pointer;
     color: #666;
     transition: all 0.3s;
-
     &:hover {
       background: rgba(0, 0, 0, 0.1);
     }

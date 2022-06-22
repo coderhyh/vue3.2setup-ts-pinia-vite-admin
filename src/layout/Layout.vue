@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-aside width="250px">
+    <el-aside>
       <Layout.Aside />
     </el-aside>
     <el-container>
@@ -10,7 +10,7 @@
       <el-main>
         <router-view v-slot="{ Component, route }">
           <transition name="fade-transform" mode="out-in">
-            <keep-alive :include="tabs.map(i => i.path.slice(1))">
+            <keep-alive :include="tabs.map((i) => i.path.slice(1))">
               <component :is="Component" :key="route.name"></component>
             </keep-alive>
           </transition>
@@ -22,20 +22,22 @@
 
 <script setup lang="ts">
 import * as Layout from '~/layout'
-const { tabs } = useStore('app')
+const { tabs, isCollapse } = useStore('app')
 </script>
 
 <style lang="less" scoped>
+:deep(.el-aside) {
+  width: auto !important;
+}
 :deep(.el-container) {
   .el-header {
-    background: white;
     padding: 0;
     height: 100px;
+    background: white;
   }
-
   .el-main {
     overflow-x: hidden;
-    background: #FAFAFA;
+    background: #fafafa;
   }
 }
 </style>

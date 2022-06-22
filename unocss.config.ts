@@ -32,7 +32,7 @@ export const createConfig = () => {
       presetAttributify(),
       presetIcons({
         prefix: '',
-        // autoInstall: true,
+        autoInstall: true,
       }),
     ],
     include: [/\.vue$/, /pages.json?$/],

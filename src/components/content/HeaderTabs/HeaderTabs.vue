@@ -121,20 +121,18 @@ const dragenter = (e: { preventDefault: () => void }, index: number) => {
 
 <style lang="less" scoped>
 .HeaderTabs {
-  height: 40px;
   box-sizing: border-box;
   padding: 5px;
   width: 100%;
+  height: 40px;
   background: #fff;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
   font-size: 12px;
   color: #666;
   white-space: nowrap;
-
   &::-webkit-scrollbar {
     display: none;
   }
-
   .tab-item {
     display: inline-block;
     position: relative;
@@ -145,7 +143,6 @@ const dragenter = (e: { preventDefault: () => void }, index: number) => {
     background: #fff;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
-
     .circle {
       margin-right: 5px;
       border-radius: 50%;
@@ -153,13 +150,11 @@ const dragenter = (e: { preventDefault: () => void }, index: number) => {
       height: 8px;
       background: #fff;
     }
-
     .circle,
     .content {
       display: inline-block;
       transition: transform 0.2s;
     }
-
     .close-icon {
       position: absolute;
       right: 0;
@@ -169,27 +164,22 @@ const dragenter = (e: { preventDefault: () => void }, index: number) => {
       transition-property: opacity, transform;
       transition-duration: 0.2s, 0.2s;
     }
-
     &:hover {
-
       .circle,
       .content,
       .close-icon {
         transform: translateX(-7px);
       }
-
       .close-icon {
         opacity: 1;
       }
     }
   }
-
   .tab-active {
     border-color: #42b983;
     background: #42b983;
     color: #fff;
   }
-
   .contextmenu {
     position: absolute;
     z-index: 1000;
@@ -202,12 +192,10 @@ const dragenter = (e: { preventDefault: () => void }, index: number) => {
     font-weight: 400;
     font-size: 12px;
     color: #333;
-
     li {
       margin: 0;
       padding: 7px 16px;
       cursor: pointer;
-
       &:hover {
         background: #eee;
       }

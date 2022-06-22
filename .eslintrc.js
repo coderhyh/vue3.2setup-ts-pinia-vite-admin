@@ -1,31 +1,33 @@
 module.exports = {
-  'env': {
-    'browser': true,
-    'es2021': true,
-    'vue/setup-compiler-macros': true
+  root: true,
+  env: {
+    browser: true,
+    node: true,
+    es2021: true,
   },
-  'parser': 'vue-eslint-parser',
-  'extends': [
+  parser: 'vue-eslint-parser',
+  extends: [
+    'prettier',
     'eslint:recommended',
     'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:vue/vue3-essential',
+    'plugin:prettier/recommended',
+    // eslint-config-prettier 的缩写
+    // 'vue-global-api',
     '.eslintrc-auto-import.json',
-    '.eslintrc-auto-import-types.json'
+    '.eslintrc-auto-import-types.json',
   ],
-  'parserOptions': {
-    'ecmaVersion': 'latest',
-    'parser': '@typescript-eslint/parser',
-    'sourceType': 'module'
+  parserOptions: {
+    ecmaVersion: 12,
+    parser: '@typescript-eslint/parser',
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
-  'plugins': [
-    'vue',
-    '@typescript-eslint',
-    'import',
-    'simple-import-sort'
-  ],
-  // rules配置文档http://eslint.cn/docs/rules/
-  'rules': {
+  // eslint-plugin-vue @typescript-eslint/eslint-plugin eslint-plugin-prettier的缩写
+  plugins: ['vue', '@typescript-eslint', 'prettier', 'import', 'simple-import-sort'],
+  rules: {
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
     'vue/no-multiple-template-root': 'off', // 解决template中最顶层只能返回一个元素的检测报错
@@ -49,77 +51,114 @@ module.exports = {
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'no-var': 'error',
-    // --以下是Possible Errors JS代码中的逻辑错误相关
-    'no-extra-parens': 'error', // 禁止不必要的括号
-    // "no-console": "error" // 不允许打印console.log
-    'no-template-curly-in-string': 'error', // 禁止在常规字符串中出现模板字符串语法${xxx}
-    // --以下是Best Practices 最佳实践
-    'default-case': 'error', // 强制switch要有default分支
-    'dot-location': ['error', 'property'], // 要求对象的点要跟属性同一行
-    'eqeqeq': 'error', // 要求使用 === 和 !==
-    'no-else-return': 'error', // 禁止在else前有return，return和else不能同时存在
-    'no-empty-function': 'error', // 禁止出现空函数，有意而为之的可以在函数内部加条注释
-    'no-multi-spaces': 'error', // 禁止出现多个空格，如===前后可以有一个空格，但是不能有多个空格
-    'no-multi-str': 'error', // 禁止出现多行字符串，可以使用模板字符串换行
-    'no-self-compare': 'error', // 禁止自身比较
-    'no-unmodified-loop-condition': 'error', // 禁止一成不变的循环条件，如while条件，防止死循环
-    'no-useless-concat': 'error', // 禁止没有必要的字符串拼接，如'a'+'b'应该写成'ab'
-    'require-await': 'error', // 禁止使用不带await的async表达式
-    // --以下是Stylistic Issues 主观的代码风格
-    'array-element-newline': ['error', 'consistent'], // 数组元素要一致的换行或者不换行
-    'block-spacing': 'error', // 强制函数/循环等块级作用域中的花括号内前后有一个空格（对象除外）
-    'brace-style': ['error', '1tbs', { 'allowSingleLine': true }], // if/elseif/else左花括号要跟if..同行，右花括号要换行；或者全部同一行
-    'comma-dangle': ['error', 'only-multiline'], // 允许在对象或数组的最后一项（不与结束括号同行）加个逗号
-    'comma-spacing': 'error', // 要求在逗号后面加个空格，禁止在逗号前面加一个空格
-    'comma-style': 'error', // 要求逗号放在数组元素、对象属性或变量声明之后，且在同一行
-    'computed-property-spacing': 'error', // 禁止在计算属性中出现空格，如obj[ 'a' ]是错的，obj['a']是对的
-    'eol-last': 'error', // 强制文件的末尾有一个空行
-    'func-call-spacing': 'error', // 禁止函数名和括号之间有个空格
-    'function-paren-newline': 'error', // 强制函数括号内的参数一致换行或一致不换行
-    'implicit-arrow-linebreak': 'error', // 禁止箭头函数的隐式返回 在箭头函数体之前出现换行
-    'indent': ['error', 2], // 使用一致的缩进，2个空格
-    'jsx-quotes': 'error', // 强制在jsx中使用双引号
-    'key-spacing': 'error', // 强制对象键值冒号后面有一个空格
-    'lines-around-comment': 'error', // 要求在块级注释/**/之前有一个空行
-    'multiline-comment-style': 'error', // 多行注释同一个风格，每一行前面都要有*
-    'new-cap': ['error', { 'capIsNew': false }], // 要求构造函数首字母大写
-    'newline-per-chained-call': ['error', { 'ignoreChainWithDepth': 2 }], // 链式调用长度超过2时，强制要求换行
-    'no-lonely-if': 'error', // 禁止else中出现单独的if
-    'no-multiple-empty-lines': 'error', // 限制最多出现两个空行
-    'no-trailing-spaces': 'error', // 禁止在空行使用空白字符
-    'no-unneeded-ternary': 'error', // 禁止多余的三元表达式，如a === 1 ? true : false应缩写为a === 1
-    'no-whitespace-before-property': 'error', // 禁止属性前有空白，如console. log(obj['a'])，log前面的空白有问题
-    'nonblock-statement-body-position': 'error', // 强制单行语句不换行
-    'object-curly-newline': ['error', { 'multiline': true }], // 对象数属性要有一致的换行，都换行或都不换行
-    'object-curly-spacing': ['error', 'always'], // 强制对象/解构赋值/import等花括号前后有空格
-    'object-property-newline': ['error', { 'allowAllPropertiesOnSameLine': true }], // 强制对象的属性在同一行或全换行
-    'one-var-declaration-per-line': 'error', // 强制变量初始化语句换行
-    'operator-assignment': 'error', // 尽可能的简化赋值操作，如x=x+1 应简化为x+=1
-    'quotes': ['error', 'single'], // 要求字符串尽可能的使用单引号
-    'semi': ['error', 'never'], // 不要分号
-    'semi-spacing': 'error', // 强制分号后面有空格，如for (let i=0; i<20; i++)
-    'semi-style': 'error', // 强制分号出现在句末
-    'space-before-blocks': 'error', // 强制块（for循环/if/函数等）前面有一个空格，如for(...){}是错的，花括号前面要空格：for(...) {}
-    'space-infix-ops': 'error', // 强制操作符（+-/*）前后有一个空格
-    'spaced-comment': 'error', // 强制注释（//或/*）后面要有一个空格
-    // --以下是ECMAScript 6 ES6相关的
-    'arrow-body-style': 'error', // 当前头函数体的花括号可以省略时，不允许出现花括号
-    'arrow-parens': ['error', 'as-needed'], // 箭头函数参数只有一个时，不允许写圆括号
-    'arrow-spacing': 'error', // 要求箭头函数的=>前后有空格
-    'no-confusing-arrow': 'error', // 禁止在可能与比较操作符混淆的地方使用箭头函数
-    'no-duplicate-imports': 'error', // 禁止重复导入
-    'no-useless-computed-key': 'error', // 禁止不必要的计算属性，如obj3={['a']: 1},其中['a']是不必要的，直接写'a'
-    'no-var': 'error', // 要求使用let或const，而不是var
-    'object-shorthand': 'error', // 要求对象字面量使用简写
-    'prefer-const': 'error', // 要求使用const声明不会被修改的变量
-    'prefer-destructuring': ['error', {
-      'array': false,
-      'object': true
-    }, { 'enforceForRenamedProperties': true }], // 要求优先使用结构赋值,enforceForRenamedProperties为true将规则应用于重命名的变量
-    'prefer-template': 'error', // 使用模板字符串，而不是字符串拼接
-    'rest-spread-spacing': 'error', // 扩展运算符...和表达式之间不允许有空格，如... re1错误，应该是...re1
-    'template-curly-spacing': 'error', // 禁止模板字符串${}内前后有空格
-    'vue/multi-word-component-names': 'off', // 关闭名称校验
-  }
+    'prettier/prettier': 'error',
+    // 禁止出现console
+    // "no-console": "warn",
+    // 禁用debugger
+    // "no-debugger": "warn",
+    // 禁止出现重复的 case 标签
+    'no-duplicate-case': 'warn',
+    // 禁止出现空语句块
+    'no-empty': 'warn',
+    // 禁止不必要的括号
+    'no-extra-parens': 'off',
+    // 禁止对 function 声明重新赋值
+    'no-func-assign': 'warn',
+    // 禁止在 return、throw、continue 和 break 语句之后出现不可达代码
+    'no-unreachable': 'warn',
+    // 强制所有控制语句使用一致的括号风格
+    // curly: 'warn',
+    // 要求 switch 语句中有 default 分支
+    'default-case': 'warn',
+    // 强制尽可能地使用点号
+    'dot-notation': 'warn',
+    // 要求使用 === 和 !==
+    eqeqeq: 'warn',
+    // 禁止 if 语句中 return 语句之后有 else 块
+    'no-else-return': 'warn',
+    // 禁止出现空函数
+    'no-empty-function': 'warn',
+    // 禁用不必要的嵌套块
+    'no-lone-blocks': 'warn',
+    // 禁止使用多个空格
+    'no-multi-spaces': 'warn',
+    // 禁止多次声明同一变量
+    'no-redeclare': 'off',
+    '@typescript-eslint/no-redeclare': ['error'],
+    // 禁止在 return 语句中使用赋值语句
+    'no-return-assign': 'warn',
+    // 禁用不必要的 return await
+    'no-return-await': 'warn',
+    // 禁止自我赋值
+    'no-self-assign': 'warn',
+    // 禁止自身比较
+    'no-self-compare': 'warn',
+    // 禁止不必要的 catch 子句
+    'no-useless-catch': 'warn',
+    // 禁止多余的 return 语句
+    'no-useless-return': 'warn',
+    // 禁止变量声明与外层作用域的变量同名
+    'no-shadow': 'off',
+    // 允许delete变量
+    'no-delete-var': 'off',
+    // 强制数组方括号中使用一致的空格
+    'array-bracket-spacing': 'warn',
+    // 强制在代码块中使用一致的大括号风格
+    'brace-style': 'warn',
+    // 强制使用骆驼拼写法命名约定
+    // camelcase: 'warn',
+    // 强制使用一致的缩进
+    indent: 'off',
+    // 强制在 JSX 属性中一致地使用双引号或单引号
+    // 'jsx-quotes': 'warn',
+    // 强制可嵌套的块的最大深度4
+    'max-depth': 'warn',
+    // 强制最大行数 300
+    // "max-lines": ["warn", { "max": 1200 }],
+    // 强制函数最大代码行数 50
+    // 'max-lines-per-function': ['warn', { max: 70 }],
+    // 强制函数块最多允许的的语句数量20
+    'max-statements': ['warn', 100],
+    // 强制回调函数最大嵌套深度
+    'max-nested-callbacks': ['warn', 3],
+    // 强制函数定义中最多允许的参数数量
+    'max-params': ['warn', 3],
+    // 强制每一行中所允许的最大语句数量
+    'max-statements-per-line': ['warn', { max: 1 }],
+    // 要求方法链中每个调用都有一个换行符
+    'newline-per-chained-call': ['warn', { ignoreChainWithDepth: 3 }],
+    // 禁止 if 作为唯一的语句出现在 else 语句中
+    'no-lonely-if': 'warn',
+    // 禁止空格和 tab 的混合缩进
+    'no-mixed-spaces-and-tabs': 'warn',
+    // 禁止出现多行空行
+    'no-multiple-empty-lines': 'warn',
+    // 禁止出现;
+    semi: ['warn', 'never'],
+    // 强制在块之前使用一致的空格
+    'space-before-blocks': 'warn',
+    // 强制在 function的左括号之前使用一致的空格
+    // 'space-before-function-paren': ['warn', 'never'],
+    // 强制在圆括号内使用一致的空格
+    'space-in-parens': 'warn',
+    // 要求操作符周围有空格
+    'space-infix-ops': 'warn',
+    // 强制在一元操作符前后使用一致的空格
+    'space-unary-ops': 'warn',
+    // 强制在注释中 // 或 /* 使用一致的空格
+    // "spaced-comment": "warn",
+    // 强制在 switch 的冒号左右有空格
+    'switch-colon-spacing': 'warn',
+    // 强制箭头函数的箭头前后使用一致的空格
+    'arrow-spacing': 'warn',
+    'prefer-const': 'warn',
+    'prefer-rest-params': 'warn',
+    'no-useless-escape': 'warn',
+    'no-irregular-whitespace': 'warn',
+    'no-prototype-builtins': 'warn',
+    'no-fallthrough': 'warn',
+    'no-extra-boolean-cast': 'warn',
+    'no-case-declarations': 'warn',
+    'no-async-promise-executor': 'warn',
+  },
 }
-
