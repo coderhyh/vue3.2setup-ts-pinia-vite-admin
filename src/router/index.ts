@@ -1,18 +1,18 @@
-import { createRouter, createWebHistory } from "vue-router";
-import NProgress from "nprogress";
+import NProgress from 'nprogress'
+import { createRouter, createWebHistory } from 'vue-router'
 
-import { routes } from "./routes";
+import { routes } from './routes'
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
-});
+})
 router.beforeEach((to, from, next) => {
-  NProgress.start();
-  next();
-});
+  NProgress.start()
+  next()
+})
 router.afterEach((to, from) => {
-  NProgress.done();
-});
+  NProgress.done()
+})
 
-export default router;
+export default router

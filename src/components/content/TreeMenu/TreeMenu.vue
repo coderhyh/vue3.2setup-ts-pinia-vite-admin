@@ -5,7 +5,7 @@
         <Icon :icon="menu.meta?.icon" size="30" />
         <span>{{ menu.meta?.name }}</span>
       </template>
-      <TreeMenu :menuList="menu.children"></TreeMenu>
+      <TreeMenu :menu-list="menu.children"></TreeMenu>
     </el-sub-menu>
     <el-menu-item v-else :index="menu.path">
       <Icon :icon="menu.meta?.icon" size="30" />

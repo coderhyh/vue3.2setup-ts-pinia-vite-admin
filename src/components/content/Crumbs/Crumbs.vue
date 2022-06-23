@@ -2,9 +2,9 @@
   <div class="crumbs">
     <Icon
       class="crumbs-icon"
-      @click="updateCollapse"
       :icon="isCollapse ? 'foundation-indent-less' : 'foundation-indent-more'"
       size="30px"
+      @click="updateCollapse"
     />
     <el-breadcrumb separator="/">
       <el-breadcrumb-item to="/">控制台</el-breadcrumb-item>
@@ -19,6 +19,7 @@
 
 <script setup lang="ts">
 import type { RouteRecordRaw } from 'vue-router'
+
 import { routes } from '~/router/routes'
 const { isCollapse, updateCollapse } = useStore('app')
 const route = useRoute()
@@ -42,7 +43,7 @@ function readNodes(
   target = '',
   arr: RouteRecordRaw[] = []
 ): RouteRecordRaw[] {
-  for (let item of list) {
+  for (const item of list) {
     arr.push(item)
     if (item.meta?.name !== target && item.children) readNodes(item.children, target, arr)
   }

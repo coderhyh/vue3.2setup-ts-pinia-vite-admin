@@ -4,7 +4,7 @@ module.exports = {
   overrides: [
     {
       files: ['**/*.less'],
-      customSyntax: 'postcss-scss',
+      customSyntax: 'postcss-less',
     },
     {
       files: ['*.html', '**/*.{html,vue}'],

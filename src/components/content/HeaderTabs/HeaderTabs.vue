@@ -1,14 +1,27 @@
 <template>
   <div class="HeaderTabs">
-    <transition-group enter-active-class="animate__animated animate__bounceInRight"
-      leave-active-class="animate__animated animate__hinge">
-      <div v-for="(item, index) in tabs" :key="item.path" class="tab-item"
-        :class="{ 'tab-active': item.path === route.path }" draggable="true" @click="tabClick(item.path, false)"
-        @contextmenu.prevent="rightClick($event, item.path)" @dragenter="dragenter($event, index)"
-        @dragover="dragover($event)" @dragstart="dragstart(index)">
+    <transition-group
+      enter-active-class="animate__animated animate__bounceInRight"
+      leave-active-class="animate__animated animate__hinge"
+    >
+      <div
+        v-for="(item, index) in tabs"
+        :key="item.path"
+        class="tab-item"
+        :class="{ 'tab-active': item.path === route.path }"
+        draggable="true"
+        @click="tabClick(item.path, false)"
+        @contextmenu.prevent="rightClick($event, item.path)"
+        @dragenter="dragenter($event, index)"
+        @dragover="dragover($event)"
+        @dragstart="dragstart(index)"
+      >
         <div v-show="item.path === route.path" class="circle"></div>
         <div class="content">{{ item.title }}</div>
-        <div class="carbon:close hover:carbon:close-filled close-icon" @click.stop="tabRemove(item.path)"></div>
+        <div
+          class="carbon:close hover:carbon:close-filled close-icon"
+          @click.stop="tabRemove(item.path)"
+        ></div>
       </div>
     </transition-group>
     <ul v-show="visible" :style="{ left: left + 'px', top: top + 'px' }" class="contextmenu">
@@ -23,14 +36,7 @@
 <script setup lang="ts">
 import { onBeforeRouteUpdate, RouteLocationRaw } from 'vue-router'
 
-const {
-  tabs,
-  addTab,
-  removeTab,
-  removeOtherTab,
-  removeRightTab,
-  removeAllTab,
-} = useStore('app')
+const { tabs, addTab, removeTab, removeOtherTab, removeRightTab, removeAllTab } = useStore('app')
 
 const route = useRoute()
 const router = useRouter()
@@ -45,12 +51,14 @@ onBeforeRouteUpdate((to, from, next) => {
 // 切换tabs
 const tabClick = (val: number | string = 0, delay = true) => {
   let path: RouteLocationRaw
-  if (typeof val === 'number')
-    path = tabs.value[val].path
+  if (typeof val === 'number') path = tabs.value[val].path
   else path = val
-  setTimeout(() => {
-    router.push(path)
-  }, delay ? 200 : 0)
+  setTimeout(
+    () => {
+      router.push(path)
+    },
+    delay ? 200 : 0
+  )
 }
 
 // tabs右键选项

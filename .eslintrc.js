@@ -28,6 +28,7 @@ module.exports = {
   // eslint-plugin-vue @typescript-eslint/eslint-plugin eslint-plugin-prettier的缩写
   plugins: ['vue', '@typescript-eslint', 'prettier', 'import', 'simple-import-sort'],
   rules: {
+    'vue/multi-word-component-names': 'off',
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
     'vue/no-multiple-template-root': 'off', // 解决template中最顶层只能返回一个元素的检测报错

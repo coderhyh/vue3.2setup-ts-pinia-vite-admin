@@ -1,8 +1,8 @@
 // "https://github.com/Allen-1998/pinia-auto-refs"
 import { AutoToRefs, ToRef } from 'vue'
 
-import userStore from '~/store/user'
 import appStore from '~/store/app'
+import userStore from '~/store/user'
 
 declare module 'vue' {
   export type AutoToRefs<T> = {

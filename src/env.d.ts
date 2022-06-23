@@ -6,3 +6,11 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
+
+declare module 'echarts-gl/components' {
+  declare function Grid3DComponent(): any
+  declare function Geo3DComponent(): any
+  declare function GlobeComponent(): any
+  declare function Mapbox3DComponent(): any
+  declare function Maptalks3DComponent(): any
+}

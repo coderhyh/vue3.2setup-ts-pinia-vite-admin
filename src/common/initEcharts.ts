@@ -1,14 +1,9 @@
-import * as echarts from 'echarts/core';
-import {
-  GraphChart
-} from 'echarts/charts';
-import {
-  TitleComponent,
-  TooltipComponent,
-  LegendComponent,
-} from 'echarts/components';
+import { GraphChart } from 'echarts/charts'
+import { LegendComponent, TitleComponent, TooltipComponent } from 'echarts/components'
+import * as echarts from 'echarts/core'
 // import { } from 'echarts/features';
-import { CanvasRenderer } from 'echarts/renderers';
+import { CanvasRenderer } from 'echarts/renderers'
+import { GlobeComponent } from 'echarts-gl/components'
 
 // 注册必须的组件
 echarts.use([
@@ -16,7 +11,8 @@ echarts.use([
   TooltipComponent,
   LegendComponent,
   GraphChart,
-  CanvasRenderer
-]);
+  CanvasRenderer,
+  GlobeComponent,
+])
 
 export default echarts

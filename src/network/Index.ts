@@ -1,7 +1,7 @@
-import { request } from "~/axios/index";
+import { request } from '~/axios/index'
 
-export const reqJson: () => any = () => {
+export const reqGraph: () => any = () => {
   return request({
-    url: "/api/data/asset/data/les-miserables.json",
-  });
-};
+    url: '/api/data/asset/data/les-miserables.json',
+  })
+}

@@ -17,6 +17,7 @@
     "auto-import-types": "^0.0.4",
     "axios": "^0.27.2",
     "echarts": "^5.3.3",
+    "echarts-gl": "^2.0.9",
     "element-plus": "^2.2.5",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.14",
