@@ -30,6 +30,7 @@ const { tabs, isCollapse } = useStore('app')
   width: auto !important;
 }
 :deep(.el-container) {
+  height: 100vh;
   .el-header {
     padding: 0;
     height: 100px;
@@ -38,7 +39,6 @@ const { tabs, isCollapse } = useStore('app')
   .el-main {
     overflow-x: hidden;
     overflow-y: scroll;
-    height: 0;
     background: #fafafa;
   }
 }

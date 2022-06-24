@@ -1,7 +1,8 @@
 <template>
   <div class="index">
-    <Graph />
-    <Earth />
+    <!-- <Graph />
+    <Earth /> -->
+    <p v-for="item in 300" :key="item">{{ item }}</p>
   </div>
 </template>
 
@@ -9,8 +10,8 @@
 
 <style lang="less" scoped>
 .index {
-  display: flex;
-  flex-wrap: wrap;
+  // display: flex;
+  // flex-wrap: wrap;
   background: #fafafa;
 }
 </style>
