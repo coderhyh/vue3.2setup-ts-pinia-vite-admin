@@ -1,10 +1,10 @@
-# Vue 3 + TypeScript + Vite
+# vue3.2setup-ts-pinia-vite-admin
 
 This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
 ## Recommended IDE Setup
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) + [Iconify IntelliSense](https://marketplace.visualstudio.com/items?itemName=antfu.iconify) + [Stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) + [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) + [Vue VSCode Snippets](https://marketplace.visualstudio.com/items?itemName=sdras.vue-vscode-snippets)
 
 ## Type Support For `.vue` Imports in TS
 

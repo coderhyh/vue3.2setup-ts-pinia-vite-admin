@@ -10,8 +10,7 @@
 <style lang="less" scoped>
 .index {
   display: flex;
-  width: 100%;
-  height: 100%;
+  flex-wrap: wrap;
   background: #fafafa;
 }
 </style>

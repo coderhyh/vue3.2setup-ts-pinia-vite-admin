@@ -14,3 +14,8 @@ provide('echarts', echarts)
 <style lang="less" scoped>
 // .App {}
 </style>
+<style lang="less">
+html {
+  overflow: hidden;
+}
+</style>

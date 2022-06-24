@@ -1,5 +1,25 @@
 @import './transition.less';
 @import './global.less';
+
+::-webkit-scrollbar {
+  /* 滚动条整体样式 */
+  width: 5px; /* 高宽分别对应横竖滚动条的尺寸 */
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  /* 滚动条里面轨道 */
+  border-radius: 5px;
+  background: #fafafa;
+}
+::-webkit-scrollbar-thumb {
+  /* 滚动条里面小方块 */
+  border-radius: 5px;
+  background: #dfdfdf;
+  &:hover {
+    background: #cfcfcf;
+  }
+}
+
 html {
   /* 滚动事件发生在 html 元素上；JS 中可以监听 html 的滚动 */
   overflow-y: auto;
@@ -25,13 +45,8 @@ body {
   /* 让绝对定位元素，根据 body 定位 */
   position: relative;
   /* 设置基本字体配置 */
-  font: 1rem 'Helvetica Neue',
-    Helvetica,
-    'PingFang SC',
-    'Hiragino Sans GB',
-    'Microsoft Yahei',
-    Arial,
-    sans-serif;
+  font: 1rem 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei',
+    Arial, sans-serif;
   /* 设置网页基本字体颜色为浅灰色 */
   color: #666;
   /* 使字体渲染更顺滑 */
